@@ -5,9 +5,15 @@ const router = express.Router();
 
 const api = express();
 
+const galeriaRouter = require('./router/galeriaRouter');
+
 api.use(cors());
 api.use(bodyparser.urlencoded({extended: true}));
+
+api.use('/public', express.static(__dirname+'/public'));
+
 api.use('/', router);
+api.use('/galeria', galeriaRouter);
 
 router.get('/', (req, res) => res.json({mensagem: 'API está OnLine'}));
 
