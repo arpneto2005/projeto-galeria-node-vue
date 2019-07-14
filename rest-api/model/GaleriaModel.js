@@ -21,4 +21,8 @@ module.exports =  class GaleriaModel {
         }
         
     }
+
+    static deletar(id, callback){
+        return db.query('delete from galeria_video where id = ?', id, callback);
+    }
 }
