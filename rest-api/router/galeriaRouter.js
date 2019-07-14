@@ -44,20 +44,6 @@ router.get('/', function(req, res, next){
     });
 });
 
-router.get('/:id?', function(req, res, next){
-    GaleriaModel.getId(req.params.id ,function(error, retorno){
-        let resposta = new RespostaClass();
-        if (error){
-            resposta.erro = true;
-            resposta.msg = 'Ocorreu um erro';
-            console.log('Erro', + error);
-        }else{
-            resposta.dados = retorno;
-        }
-        res.json(resposta);
-    });
-});
-
 router.post('/', upload.single('arquivo') , function(req, res, next){
     let resposta = new RespostaClass();
 
@@ -89,6 +75,20 @@ router.post('/', upload.single('arquivo') , function(req, res, next){
     }
 
     
+});
+
+router.get('/:id?', function(req, res, next){
+    GaleriaModel.getId(req.params.id ,function(error, retorno){
+        let resposta = new RespostaClass();
+        if (error){
+            resposta.erro = true;
+            resposta.msg = 'Ocorreu um erro';
+            console.log('Erro', + error);
+        }else{
+            resposta.dados = retorno;
+        }
+        res.json(resposta);
+    });
 });
 
 module.exports = router;
