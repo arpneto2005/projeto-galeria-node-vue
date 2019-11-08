@@ -72,6 +72,7 @@ router.post('/', upload.single('arquivo') , function(req, res, next){
         resposta.erro = true;
         resposta.msg = 'Vídeo não enviado';
         console.log('Erro', + error);
+        res.json(resposta);
     }    
 });
 
